@@ -1,0 +1,98 @@
+[12-Oct-2020 21:41:30 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: NO) in F:\Xampp\htdocs\product\app\core\Database.php on line 15
+[12-Oct-2020 21:42:17 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in F:\Xampp\htdocs\product\app\models\Settings.php:19
+Stack trace:
+#0 F:\Xampp\htdocs\product\app\core\App.php(50): Altum\Models\Settings->get()
+#1 F:\Xampp\htdocs\product\index.php(11): Altum\App->__construct()
+#2 {main}
+  thrown in F:\Xampp\htdocs\product\app\models\Settings.php on line 19
+[12-Oct-2020 21:42:20 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in F:\Xampp\htdocs\product\app\models\Settings.php:19
+Stack trace:
+#0 F:\Xampp\htdocs\product\app\core\App.php(50): Altum\Models\Settings->get()
+#1 F:\Xampp\htdocs\product\index.php(11): Altum\App->__construct()
+#2 {main}
+  thrown in F:\Xampp\htdocs\product\app\models\Settings.php on line 19
+[12-Oct-2020 21:46:35 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in F:\Xampp\htdocs\product\app\models\Settings.php:19
+Stack trace:
+#0 F:\Xampp\htdocs\product\app\core\App.php(50): Altum\Models\Settings->get()
+#1 F:\Xampp\htdocs\product\index.php(11): Altum\App->__construct()
+#2 {main}
+  thrown in F:\Xampp\htdocs\product\app\models\Settings.php on line 19
+[13-Oct-2020 06:41:56 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in F:\Xampp\htdocs\product\app\core\Database.php:68
+Stack trace:
+#0 F:\Xampp\htdocs\product\app\core\Router.php(424): Altum\Database\Database::simple_get('url', '`links`', Array)
+#1 F:\Xampp\htdocs\product\app\core\App.php(28): Altum\Routing\Router::parse_controller()
+#2 F:\Xampp\htdocs\product\index.php(11): Altum\App->__construct()
+#3 {main}
+  thrown in F:\Xampp\htdocs\product\app\core\Database.php on line 68
+[13-Oct-2020 06:45:47 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in F:\Xampp\htdocs\product\app\core\Database.php:68
+Stack trace:
+#0 F:\Xampp\htdocs\product\app\core\Router.php(424): Altum\Database\Database::simple_get('url', '`links`', Array)
+#1 F:\Xampp\htdocs\product\app\core\App.php(28): Altum\Routing\Router::parse_controller()
+#2 F:\Xampp\htdocs\product\index.php(11): Altum\App->__construct()
+#3 {main}
+  thrown in F:\Xampp\htdocs\product\app\core\Database.php on line 68
+[13-Oct-2020 06:46:00 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in F:\Xampp\htdocs\product\app\core\Database.php:68
+Stack trace:
+#0 F:\Xampp\htdocs\product\app\core\Router.php(424): Altum\Database\Database::simple_get('url', '`links`', Array)
+#1 F:\Xampp\htdocs\product\app\core\App.php(28): Altum\Routing\Router::parse_controller()
+#2 F:\Xampp\htdocs\product\index.php(11): Altum\App->__construct()
+#3 {main}
+  thrown in F:\Xampp\htdocs\product\app\core\Database.php on line 68
+[13-Oct-2020 06:46:33 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/1045): Access denied for user ''@'localhost' (using password: NO) in F:\Xampp\htdocs\product\app\core\Database.php on line 15
+[13-Oct-2020 06:46:43 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in F:\Xampp\htdocs\product\app\core\Database.php:68
+Stack trace:
+#0 F:\Xampp\htdocs\product\app\core\Router.php(424): Altum\Database\Database::simple_get('url', '`links`', Array)
+#1 F:\Xampp\htdocs\product\app\core\App.php(28): Altum\Routing\Router::parse_controller()
+#2 F:\Xampp\htdocs\product\index.php(11): Altum\App->__construct()
+#3 {main}
+  thrown in F:\Xampp\htdocs\product\app\core\Database.php on line 68
+[13-Oct-2020 06:47:19 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in F:\Xampp\htdocs\product\app\core\Database.php:68
+Stack trace:
+#0 F:\Xampp\htdocs\product\app\core\Router.php(424): Altum\Database\Database::simple_get('url', '`links`', Array)
+#1 F:\Xampp\htdocs\product\app\core\App.php(28): Altum\Routing\Router::parse_controller()
+#2 F:\Xampp\htdocs\product\index.php(11): Altum\App->__construct()
+#3 {main}
+  thrown in F:\Xampp\htdocs\product\app\core\Database.php on line 68
+[13-Oct-2020 06:47:20 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in F:\Xampp\htdocs\product\app\core\Database.php:68
+Stack trace:
+#0 F:\Xampp\htdocs\product\app\core\Router.php(424): Altum\Database\Database::simple_get('url', '`links`', Array)
+#1 F:\Xampp\htdocs\product\app\core\App.php(28): Altum\Routing\Router::parse_controller()
+#2 F:\Xampp\htdocs\product\index.php(11): Altum\App->__construct()
+#3 {main}
+  thrown in F:\Xampp\htdocs\product\app\core\Database.php on line 68
+[13-Oct-2020 06:47:25 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in F:\Xampp\htdocs\product\app\core\Database.php:68
+Stack trace:
+#0 F:\Xampp\htdocs\product\app\core\Router.php(424): Altum\Database\Database::simple_get('url', '`links`', Array)
+#1 F:\Xampp\htdocs\product\app\core\App.php(28): Altum\Routing\Router::parse_controller()
+#2 F:\Xampp\htdocs\product\index.php(11): Altum\App->__construct()
+#3 {main}
+  thrown in F:\Xampp\htdocs\product\app\core\Database.php on line 68
+[13-Oct-2020 06:47:29 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in F:\Xampp\htdocs\product\app\core\Database.php:68
+Stack trace:
+#0 F:\Xampp\htdocs\product\app\core\Router.php(424): Altum\Database\Database::simple_get('url', '`links`', Array)
+#1 F:\Xampp\htdocs\product\app\core\App.php(28): Altum\Routing\Router::parse_controller()
+#2 F:\Xampp\htdocs\product\index.php(11): Altum\App->__construct()
+#3 {main}
+  thrown in F:\Xampp\htdocs\product\app\core\Database.php on line 68
+[13-Oct-2020 06:47:36 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in F:\Xampp\htdocs\product\app\core\Database.php:68
+Stack trace:
+#0 F:\Xampp\htdocs\product\app\core\Router.php(424): Altum\Database\Database::simple_get('url', '`links`', Array)
+#1 F:\Xampp\htdocs\product\app\core\App.php(28): Altum\Routing\Router::parse_controller()
+#2 F:\Xampp\htdocs\product\index.php(11): Altum\App->__construct()
+#3 {main}
+  thrown in F:\Xampp\htdocs\product\app\core\Database.php on line 68
+[13-Oct-2020 06:48:34 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in F:\Xampp\htdocs\product\app\core\Database.php:68
+Stack trace:
+#0 F:\Xampp\htdocs\product\app\core\Router.php(424): Altum\Database\Database::simple_get('url', '`links`', Array)
+#1 F:\Xampp\htdocs\product\app\core\App.php(28): Altum\Routing\Router::parse_controller()
+#2 F:\Xampp\htdocs\product\index.php(11): Altum\App->__construct()
+#3 {main}
+  thrown in F:\Xampp\htdocs\product\app\core\Database.php on line 68
+[13-Oct-2020 06:51:19 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to a member function fetch_object() on boolean in F:\Xampp\htdocs\product\app\models\Settings.php:19
+Stack trace:
+#0 F:\Xampp\htdocs\product\app\core\App.php(50): Altum\Models\Settings->get()
+#1 F:\Xampp\htdocs\product\index.php(11): Altum\App->__construct()
+#2 {main}
+  thrown in F:\Xampp\htdocs\product\app\models\Settings.php on line 19
+[13-Oct-2020 04:51:39 UTC] PHP Notice:  Undefined index: host in F:\Xampp\htdocs\product\app\controllers\Index.php on line 13
+[13-Oct-2020 04:51:39 UTC] PHP Notice:  Undefined index: host in F:\Xampp\htdocs\product\app\controllers\Index.php on line 39
