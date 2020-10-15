@@ -223,7 +223,7 @@
                                     </div>
                                 </div>
 
-                                <div class="<?= !$this->user->plan_settings->facebook_pixel ? 'container-disabled': null ?>">
+                                <div class="<?= !$this->user->plan->plan_settings->facebook_pixel ? 'container-disabled': null ?>">
                                     <div class="form-group">
                                         <label><i class="fab fa-fw fa-facebook fa-sm mr-1"></i> <?= $this->language->link->settings->facebook_pixel ?></label>
                                         <input id="facebook_pixel" type="text" class="form-control" name="facebook_pixel" value="<?= $data->link->settings->facebook_pixel ?? '' ?>" />
@@ -237,12 +237,13 @@
                             </button>
 
                             <div class="collapse" id="experience_container">
-                            <button class="btn btn-sm btn-primary add-more exp_add_field_button" style="padding: 2px 7px;" type="button"><i class="glyphicon glyphicon-plus"></i> Add
+                            <button class="btn btn-sm btn-primary add-more exp_add_field_button <?= !$this->user->plan->settings->experience ? 'container-disabled': null ?>" style="padding: 2px 7px;" type="button"><i class="glyphicon glyphicon-plus"></i> Add
                     </button>
-                            <div id="experience" class="exp_input_fields_wrap">    
+                            <div id="experience" class="exp_input_fields_wrap <?= !$this->user->plan->settings->experience ? 'container-disabled': null ?>">    
                             <?php 
                           
                           if(property_exists($data->link->settings, 'experience')){ 
+                            if($data->link->settings->experience->company !=  ""){ 
                                 for($i = 0; $i < count($data->link->settings->experience->company); $i++){
                                    
                                 ?>
@@ -269,7 +270,7 @@
                                         <input id="experience_end" type="date" class="form-control" name="experience_end_date[]" value="<?= $data->link->settings->experience->end[$i] ?? '' ?>" />
                                         <small class="text-muted"><?= $this->language->link->settings->experience_end ?></small>
                                     </div>
-                            <?php } }else{ ?>
+                            <?php }} }else{ ?>
                                 <div class="form-group autocomplete">
                                         <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->experience_company ?></label>
                                         <input id="myInput" onclick="autofill(this)" type="text" class="form-control" name="experience_company[]" value="" />
@@ -305,11 +306,12 @@
                             </button>
 
                             <div class="collapse" id="education_container">
-                            <button class="btn btn-sm btn-primary add-more add_field_button" style="padding: 2px 7px;" type="button"><i class="glyphicon glyphicon-plus"></i> Add
+                            <button class="btn btn-sm btn-primary add-more add_field_button <?= !$this->user->plan->settings->education ? 'container-disabled': null ?>" style="padding: 2px 7px;" type="button"><i class="glyphicon glyphicon-plus"></i> Add
                     </button>
-                            <div id="education" class="input_fields_wrap">    
+                            <div id="education" class="input_fields_wrap <?= !$this->user->plan->settings->education ? 'container-disabled': null ?>" >    
                             <?php 
                         //    print_r($data->link->settings->education);
+                        if(property_exists($data->link->settings, 'experience')){ 
                             if($data->link->settings->education->course !=  ""){ 
                                 for($i = 0; $i < count($data->link->settings->education->course); $i++){
                                     echo $data->link->settings->education->course[$i];
@@ -331,7 +333,7 @@
                                         <input id="education_year" type="date" class="form-control" name="education_year[]" value="<?= $data->link->settings->education->year[$i] ?? '' ?>" />
                                         <small class="text-muted"><?= $this->language->link->settings->education_year ?></small>
                                     </div>
-                            <?php } }else{ ?>
+                            <?php } } }else{ ?>
                                 <div class="form-group">
                                         <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->education_course ?></label>
                                         <input id="education_course" onclick="autofillEdu(this)" type="text" class="form-control" name="education_course[]" value="" />

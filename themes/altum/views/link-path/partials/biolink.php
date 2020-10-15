@@ -100,9 +100,13 @@
                         <?php endif ?>
                     <?php endif ?>
 
-                    <h5>Experience</h5>
-                    <?php if($data->link->settings->experience->company !=  ""){ 
-                                for($i = 0; $i < count($data->link->settings->experience->company); $i++){
+                   
+                    <?php 
+                    if(property_exists($data->link->settings, 'experience')){ 
+                   
+                      if($data->link->settings->experience->company !=  ""){ ?>
+                           <h5>Experience</h5>
+                           <?php   for($i = 0; $i < count($data->link->settings->experience->company); $i++){
                                    
                                 ?>
                                
@@ -117,10 +121,13 @@
                                     
                                      To   <label><b><?= $data->link->settings->experience->end[$i] ?? '' ?></b></label>
                                     </div>
-                            <?php } } ?>
+                            <?php } } } ?>
 
-                    <h5>Education</h5>
+                  
                     <?php if(property_exists($data->link->settings, 'education')){ 
+                          if($data->link->settings->education->course !=  ""){  ?>
+                            <h5>Education</h5>
+                           <?php
                                 for($i = 0; $i < count($data->link->settings->education->course); $i++){
                                    
                                 ?>
@@ -134,7 +141,7 @@
                                     <div class="form-group">
                                      on   <label><b> <?= $data->link->settings->education->year[$i] ?? '' ?></b></label>
                                     </div>
-                            <?php } } ?>
+                            <?php } } }  ?>
 
                 </footer>
 
