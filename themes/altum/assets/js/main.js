@@ -177,17 +177,38 @@ function autocomplete(inp, arr) {
   /*An array containing all the country names in the world:*/
  
   function autofill(elem) {
-      var data = ["Spericorn","Google","Amazon","Flipcart"];
-  
+    $.getJSON("app/includes/experience_company.json", function (data) {
+
+      var arrItems = [];      // THE ARRAY TO STORE JSON ITEMS.
+      $.each(data, function (index, value) {
+          arrItems.push(value);       // PUSH THE VALUES INSIDE THE ARRAY.
+      });
+
+      var col = [];
+      for (var i = 0; i < arrItems.length; i++) {
+
+          col.push(arrItems[i]['Name']);
+      }
     var id = $(elem).attr("id");
-    autocomplete(document.getElementById(id), data);
-    
+    autocomplete(document.getElementById(id), col);
+  }); 
   }
   function autofillEdu(elem) {
-      var data = ["BCA","BSc Computer Science","MSc Computer Science","B-Tech"];
-  
+    $.getJSON("app/includes/education_course.json", function (data) {
+
+      var arrItems = [];      // THE ARRAY TO STORE JSON ITEMS.
+      $.each(data, function (index, value) {
+          arrItems.push(value);       // PUSH THE VALUES INSIDE THE ARRAY.
+      });
+
+      var col = [];
+      for (var i = 0; i < arrItems.length; i++) {
+
+          col.push(arrItems[i]['Name']);
+      }
     var id = $(elem).attr("id");
-    autocomplete(document.getElementById(id), data);
+    autocomplete(document.getElementById(id), col);
+  }); 
     
   }
   

@@ -129,6 +129,19 @@
                         </div>
 
                         <div class="custom-control custom-switch mb-3">
+                        <input id="education" name="education" type="checkbox" class="custom-control-input" <?= @$data->user->plan->settings->education ? 'checked="checked"' : null ?>>
+                        <label class="custom-control-label" for="education"><?= $this->language->admin_plans->plan->education ?></label>
+                        <div><small class="text-muted"><?= $this->language->admin_plans->plan->education_help ?></small></div>
+                    </div>
+
+                    <div class="custom-control custom-switch mb-3">
+                        <input id="experience" name="experience" type="checkbox" class="custom-control-input" <?= @$data->user->plan->settings->experience ? 'checked="checked"' : null ?>>
+                        <label class="custom-control-label" for="experience"><?= $this->language->admin_plans->plan->experience ?></label>
+                        <div><small class="text-muted"><?= $this->language->admin_plans->plan->experience_help ?></small></div>
+                    </div>
+
+
+                        <div class="custom-control custom-switch mb-3">
                             <input id="custom_url" name="custom_url" type="checkbox" class="custom-control-input" <?= $data->user->plan->settings->custom_url ? 'checked="checked"' : null ?>>
                             <label class="custom-control-label" for="custom_url"><?= $this->language->admin_plans->plan->custom_url ?></label>
                             <div><small class="text-muted"><?= $this->language->admin_plans->plan->custom_url_help ?></small></div>
