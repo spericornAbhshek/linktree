@@ -55,6 +55,7 @@ class AdminUserUpdate extends Controller {
                         'additional_global_domains' => (bool) isset($_POST['additional_global_domains']),
                         'education'             => (bool) isset($_POST['education']),
                         'experience'            => (bool) isset($_POST['experience']),
+                        'skillset'              => (bool) isset($_POST['skillset']),
                         'custom_url'            => (bool) isset($_POST['custom_url']),
                         'deep_links'            => (bool) isset($_POST['deep_links']),
                         'no_ads'                => (bool) isset($_POST['no_ads']),

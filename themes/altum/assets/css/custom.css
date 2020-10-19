@@ -852,3 +852,13 @@ h1, .h1 {
 		filter: grayscale(100%);
 	}
 }
+span.label.label-info.tag {
+    color: white;
+    background: black;
+}
+.badge-info{
+	margin: 2px; padding: 5px;
+}
+.word-break{
+	word-break: break-all;
+}

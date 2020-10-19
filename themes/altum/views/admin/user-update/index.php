@@ -140,6 +140,11 @@
                         <div><small class="text-muted"><?= $this->language->admin_plans->plan->experience_help ?></small></div>
                     </div>
 
+                    <div class="custom-control custom-switch mb-3">
+                        <input id="skillset" name="skillset" type="checkbox" class="custom-control-input" <?= @$data->user->plan->settings->skillset ? 'checked="checked"' : null ?>>
+                        <label class="custom-control-label" for="skillset"><?= $this->language->admin_plans->plan->skillset ?></label>
+                        <div><small class="text-muted"><?= $this->language->admin_plans->plan->skillset_help ?></small></div>
+                    </div>
 
                         <div class="custom-control custom-switch mb-3">
                             <input id="custom_url" name="custom_url" type="checkbox" class="custom-control-input" <?= $data->user->plan->settings->custom_url ? 'checked="checked"' : null ?>>

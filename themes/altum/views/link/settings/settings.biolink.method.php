@@ -1,6 +1,8 @@
 <?php defined('ALTUMCODE') || die() ?>
 
 <?php ob_start() ?>
+<!-- Stylesheet -->
+
 <div class="row">
     <div class="col-12 col-lg-6">
 
@@ -333,6 +335,12 @@
                                         <input id="education_year" type="date" class="form-control" name="education_year[]" value="<?= $data->link->settings->education->year[$i] ?? '' ?>" />
                                         <small class="text-muted"><?= $this->language->link->settings->education_year ?></small>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->education_yearend ?></label>
+                                        <input id="education_yearend" type="date" class="form-control" name="education_yearend[]" value="<?= $data->link->settings->education->yearend[$i] ?? '' ?>" />
+                                        <small class="text-muted"><?= $this->language->link->settings->education_yearend ?></small>
+                                    </div>
                             <?php } } }else{ ?>
                                 <div class="form-group">
                                         <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->education_course ?></label>
@@ -351,11 +359,35 @@
                                         <input id="education_year" type="date" class="form-control" name="education_year[]" value="" />
                                         <small class="text-muted"><?= $this->language->link->settings->education_year ?></small>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->education_yearend ?></label>
+                                        <input id="education_yearend" type="date" class="form-control" name="education_yearend[]" value="" />
+                                        <small class="text-muted"><?= $this->language->link->settings->education_yearend ?></small>
+                                    </div>
                             <?php } ?>
                                 
                             </div>
 
                             </div>
+                            
+
+                            <button class="btn btn-block btn-gray-300 my-4" type="button" data-toggle="collapse" data-target="#skillset_container" aria-expanded="false" aria-controls="skillset_container">
+                                <?= $this->language->link->settings->skillset ?>
+                            </button>
+
+
+                            <div class="collapse" id="skillset_container">
+                                <div class="<?= !$this->user->plan->settings->skillset ? 'container-disabled': null ?>">
+                                    <div class="form-group">
+                                        <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->skillset ?></label>
+                                        <input type="text" name="skillset" class="form-control" data-role="tagsinput" value="<?=$data->link->settings->skillset ?>">
+                                     
+                                    </div>
+                               
+                                </div>
+                            </div>
+
 
                             <button class="btn btn-block btn-gray-300 my-4" type="button" data-toggle="collapse" data-target="#seo_container" aria-expanded="false" aria-controls="seo_container">
                                 <?= $this->language->link->settings->seo_header ?>

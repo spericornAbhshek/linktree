@@ -23,6 +23,8 @@
 
                 <main id="links" class="mt-4">
 
+
+                
                     <?php if($data->links): ?>
                         <?php foreach($data->links as $row): ?>
 
@@ -60,7 +62,69 @@
 
                         <?php endforeach ?>
                     <?php endif ?>
+                    <div  class="d-flex flex-wrap justify-content-center mt-5">
+                    <?php 
+                    if(property_exists($data->link->settings, 'experience')){ 
+                   
+                      if($data->link->settings->experience->company !=  ""){ ?>
+                           <h5>Experience</h5>
+                           <table style="width: 100%; text-align: left;" >
+                            <tr>
+                                <td><b>Company Name</b></td>
+                                <td colspan="1"><b>Position</b></td>
+                                <td><b>Time</b></td>
+                            </tr>
+                           <?php   for($i = 0; $i < count($data->link->settings->experience->company); $i++){
+                                   
+                                ?>
+                               
+                                   <tr style="text-align: left;">
+                                       <td><?= $data->link->settings->experience->company[$i] ?? '' ?></td>
+                                       <td colspan="1"><?= $data->link->settings->experience->position[$i] ?? '' ?></td>
+                                       <td><?= date('Y', strtotime($data->link->settings->experience->start[$i])) ?? '' ?>-<?= date('Y', strtotime($data->link->settings->experience->end[$i])) ?? '' ?></td>
+                                    </tr>
+                               
+                                
+                                   
+                            <?php } ?> </table> <?php  } } ?>
 
+                  
+                    <?php if(property_exists($data->link->settings, 'education')){ 
+                          if($data->link->settings->education->course !=  ""){  ?>
+                            <h5>Education</h5>
+                            <table style="width: 100%; text-align: left;">
+                            <tr>
+                                <td><b>Course Name</b></td>
+                                <td colspan="1"><b>University</b></td>
+                                <td><b>Time</b></td>
+                            </tr>
+                           <?php
+                                for($i = 0; $i < count($data->link->settings->education->course); $i++){
+                                   
+                                ?>
+                                <tr style="text-align: left;">
+                                       <td><?= $data->link->settings->education->course[$i] ?? '' ?></td>
+                                       <td colspan="1"><?= $data->link->settings->education->univ[$i] ?? '' ?></td>
+                                       <td><?= date('Y', strtotime($data->link->settings->education->year[$i])) ?? '' ?>-<?= date('Y', strtotime($data->link->settings->education->yearend[$i])) ?? '' ?></td>
+                                    </tr>
+                               
+                                
+                                   
+                            <?php } ?> </table> <?php } }  ?>
+                            </div>
+                    <?php if(property_exists($data->link->settings, 'skillset')){ 
+                          if($data->link->settings->skillset !=  ""){  ?>
+                            <h5>Skill Set</h5>
+                           
+                               
+                                
+                                    <div class="word-break">
+                                         <label><b><?= $data->link->settings->skillset ?? '' ?></b></label> 
+                                       
+                                    </div>
+                               
+                            <?php } }   ?>
+                          
                     <?php if($data->user->plan_settings->socials): ?>
                     <div id="socials" class="d-flex flex-wrap justify-content-center mt-5">
 
@@ -92,6 +156,7 @@
                 <?php require THEME_PATH . 'views/partials/ads_footer_biolink.php' ?>
                        
                 <footer class="link-footer">
+                 
                     <?php if($data->link->settings->display_branding): ?>
                         <?php if(isset($data->link->settings->branding, $data->link->settings->branding->name, $data->link->settings->branding->url) && !empty($data->link->settings->branding->name)): ?>
                             <a id="branding" href="<?= !empty($data->link->settings->branding->url) ? $data->link->settings->branding->url : '#' ?>" style="<?= $data->link->design->text_style ?>"><?= $data->link->settings->branding->name ?></a>
@@ -99,50 +164,6 @@
                             <a id="branding" href="<?= url() ?>" style="<?= $data->link->design->text_style ?>"><?= \Altum\Language::get()->link->branding ?></a>
                         <?php endif ?>
                     <?php endif ?>
-
-                   
-                    <?php 
-                    if(property_exists($data->link->settings, 'experience')){ 
-                   
-                      if($data->link->settings->experience->company !=  ""){ ?>
-                           <h5>Experience</h5>
-                           <?php   for($i = 0; $i < count($data->link->settings->experience->company); $i++){
-                                   
-                                ?>
-                               
-                                
-                                    <div class="form-group">
-                                        Worked as <label><b><?= $data->link->settings->experience->position[$i] ?? '' ?></b></label> in
-                                        <label><b> <?= $data->link->settings->experience->company[$i] ?? '' ?></b></label> 
-                                    </div>
-                               
-                                    <div class="form-group">
-                                     From   <label><b> <?= $data->link->settings->experience->start[$i] ?? '' ?></b></label>
-                                    
-                                     To   <label><b><?= $data->link->settings->experience->end[$i] ?? '' ?></b></label>
-                                    </div>
-                            <?php } } } ?>
-
-                  
-                    <?php if(property_exists($data->link->settings, 'education')){ 
-                          if($data->link->settings->education->course !=  ""){  ?>
-                            <h5>Education</h5>
-                           <?php
-                                for($i = 0; $i < count($data->link->settings->education->course); $i++){
-                                   
-                                ?>
-                               
-                                
-                                    <div class="form-group">
-                                        Completed <label><b><?= $data->link->settings->education->course[$i] ?? '' ?></b></label> From
-                                        <label><b> <?= $data->link->settings->education->univ[$i] ?? '' ?></b></label> 
-                                    </div>
-                               
-                                    <div class="form-group">
-                                     on   <label><b> <?= $data->link->settings->education->year[$i] ?? '' ?></b></label>
-                                    </div>
-                            <?php } } }  ?>
-
                 </footer>
 
             </div>

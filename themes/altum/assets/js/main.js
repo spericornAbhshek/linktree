@@ -211,4 +211,9 @@ function autocomplete(inp, arr) {
   }); 
     
   }
-  
+  $(document).ready(function(){
+    $(".bootstrap-tagsinput").addClass("form-control");
+    $(".bootstrap-tagsinput").css("height", "auto");
+    $(".badge-info").css("margin", "2px");
+    $(".badge-info").css("padding", "5px");
+   });

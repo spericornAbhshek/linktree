@@ -286,6 +286,7 @@ class LinkAjax extends Controller {
                 'course' => '',
                 'univ' => '',
                 'year' => '',
+                'yearend' => '',
             ],
             'experience' => [
                 'company'   =>  "",
@@ -737,6 +738,11 @@ class LinkAjax extends Controller {
             $_POST['education_year'][$key] = Database::clean_string($_POST['education_year'][$key]);
 
         }
+        foreach($_POST['education_yearend'] as $key => $value) {
+
+            $_POST['education_yearend'][$key] = Database::clean_string($_POST['education_yearend'][$key]);
+
+        }
 
         foreach($_POST['experience_company'] as $key => $value) {
 
@@ -777,6 +783,7 @@ class LinkAjax extends Controller {
             'google_analytics'  => $_POST['google_analytics'],
             'facebook_pixel'    => $_POST['facebook_pixel'],
             'display_branding'  => $_POST['display_branding'],
+            'skillset'          => $_POST['skillset'],
             'experience'     => [
                     'company'   => $_POST['experience_company'],
                     'position'   => $_POST['experience_position'],
@@ -787,6 +794,7 @@ class LinkAjax extends Controller {
                     'course'    => $_POST['education_course'],
                     'univ'      => $_POST['education_univ'],
                     'year'      => $_POST['education_year'],
+                    'yearend'      => $_POST['education_yearend'],
                 ],
             'branding'      => [
                     'name'      => $_POST['branding_name'],
