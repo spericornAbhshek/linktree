@@ -722,54 +722,74 @@ class LinkAjax extends Controller {
             }
 
         }
+        if(!empty($_POST['education_course'])){
+            foreach($_POST['education_course'] as $key => $value) {
 
-        foreach($_POST['education_course'] as $key => $value) {
+                $_POST['education_course'][$key] = Database::clean_string($_POST['education_course'][$key]);
 
-            $_POST['education_course'][$key] = Database::clean_string($_POST['education_course'][$key]);
-
+            }
         }
-        foreach($_POST['education_univ'] as $key => $value) {
+        if(!empty($_POST['education_univ'])){
+            foreach($_POST['education_univ'] as $key => $value) {
 
-            $_POST['education_univ'][$key] = Database::clean_string($_POST['education_univ'][$key]);
+                $_POST['education_univ'][$key] = Database::clean_string($_POST['education_univ'][$key]);
 
+            }
         }
-        foreach($_POST['education_year'] as $key => $value) {
+        if(!empty($_POST['education_year'])){
+            foreach($_POST['education_year'] as $key => $value) {
 
-            $_POST['education_year'][$key] = Database::clean_string($_POST['education_year'][$key]);
+                $_POST['education_year'][$key] = Database::clean_string($_POST['education_year'][$key]);
 
+            }
         }
-        foreach($_POST['education_yearend'] as $key => $value) {
+        if(!empty($_POST['education_yearend'])){
+            foreach($_POST['education_yearend'] as $key => $value) {
 
-            $_POST['education_yearend'][$key] = Database::clean_string($_POST['education_yearend'][$key]);
+                $_POST['education_yearend'][$key] = Database::clean_string($_POST['education_yearend'][$key]);
 
+            }
         }
-
-        foreach($_POST['experience_company'] as $key => $value) {
-
-            $_POST['experience_company'][$key] = Database::clean_string($_POST['experience_company'][$key]);
-
+        if(!empty($_POST['experience_company'])){
+            foreach($_POST['experience_company'] as $key => $value) {
+                if($_POST['experience_company'][$key] !=""){
+                $_POST['experience_company'][$key] = Database::clean_string($_POST['experience_company'][$key]);
+                }
+            }
         }
-        foreach($_POST['experience_position'] as $key => $value) {
-
-            $_POST['experience_position'][$key] = Database::clean_string($_POST['experience_position'][$key]);
-
+        if(!empty($_POST['experience_position'])){
+            foreach($_POST['experience_position'] as $key => $value) {
+                if($_POST['experience_position'][$key] !=""){
+                $_POST['experience_position'][$key] = Database::clean_string($_POST['experience_position'][$key]);
+                }
+            }
         }
-        foreach($_POST['experience_start_date'] as $key => $value) {
+        if(!empty($_POST['experience_start_date'])){
+            foreach($_POST['experience_start_date'] as $key => $value) {
+                if($_POST['experience_start_date'][$key] !=""){
+                    $_POST['experience_start_date'][$key] = Database::clean_string($_POST['experience_start_date'][$key]);
+                }
+                
 
-            $_POST['experience_start_date'][$key] = Database::clean_string($_POST['experience_start_date'][$key]);
-
+            }
         }
-        foreach($_POST['experience_end_date'] as $key => $value) {
+       
+        if(!empty($_POST['experience_end_date'])){
+           
+            foreach($_POST['experience_end_date'] as $key => $value) {
+                if($_POST['experience_end_date'][$key] !=""){
+                    $_POST['experience_end_date'][$key] = Database::clean_string($_POST['experience_end_date'][$key]);
+                }
+                
 
-            $_POST['experience_end_date'][$key] = Database::clean_string($_POST['experience_end_date'][$key]);
-
+            }
         }
 
         /* Make sure the font is ok */
         $biolink_fonts = require APP_PATH . 'includes/biolink_fonts.php';
         $_POST['font'] = !array_key_exists($_POST['font'], $biolink_fonts) ? false : Database::clean_string($_POST['font']);
        
-       
+      
         /* Set the new settings variable */
         $settings = json_encode([
             'title'             => $_POST['title'],
@@ -783,18 +803,18 @@ class LinkAjax extends Controller {
             'google_analytics'  => $_POST['google_analytics'],
             'facebook_pixel'    => $_POST['facebook_pixel'],
             'display_branding'  => $_POST['display_branding'],
-            'skillset'          => $_POST['skillset'],
+            'skillset'          => @$_POST['skillset'],
             'experience'     => [
-                    'company'   => $_POST['experience_company'],
-                    'position'   => $_POST['experience_position'],
-                    'start'     => $_POST['experience_start_date'],
-                    'end'       => $_POST['experience_end_date'],
+                    'company'   => @$_POST['experience_company'],
+                    'position'  => @$_POST['experience_position'],
+                    'start'     => @$_POST['experience_start_date'],
+                    'end'       => @$_POST['experience_end_date'],
                 ],
             'education'     => [
-                    'course'    => $_POST['education_course'],
-                    'univ'      => $_POST['education_univ'],
-                    'year'      => $_POST['education_year'],
-                    'yearend'      => $_POST['education_yearend'],
+                    'course'    => @$_POST['education_course'],
+                    'univ'      => @$_POST['education_univ'],
+                    'year'      => @$_POST['education_year'],
+                    'yearend'   => @$_POST['education_yearend'],
                 ],
             'branding'      => [
                     'name'      => $_POST['branding_name'],

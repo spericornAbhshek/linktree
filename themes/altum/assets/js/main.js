@@ -17,7 +17,7 @@ $('[type=submit][name=submit]').on('click', (event) => {
 $('body').on('click', '[data-confirm]', (event) => {
     let message = $(event.currentTarget).attr('data-confirm');
 
-    if(!confirm(message)) return false;
+    if (!confirm(message)) return false;
 });
 
 /* Custom links */
@@ -49,7 +49,7 @@ $(add_button).click(function(e) { //on add input button click
     e.preventDefault();
     if (i < max_fields) { //max input box allowed
         i++; //text box increment
-        $(wrapper).append("<div><div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> Course</label> <input id='education_course"+i+"' onclick='autofillEdu(this)' type='text' class='form-control' name='education_course[]' value='' /> <small class='text-muted'>Course</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> University</label> <input id='education_univ' type='text' class='form-control' name='education_univ[]' value='' /> <small class='text-muted'>University</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> Year</label> <input id='education_year' type='date' class='form-control' name='education_year[]' value='' /> <small class='text-muted'>Year</small> </div><span class='remove_field label label-danger red' style=' margin-left:10px; cursor: pointer; color:red;'>x</span></div>"); //add input box
+        $(wrapper).append("<div><div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> Course</label> <input id='education_course" + i + "' onclick='autofillEdu(this)' required type='text' class='form-control' name='education_course[]' value='' /> <small class='text-muted'>Course</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> University</label> <input id='education_univ' required type='text' class='form-control' name='education_univ[]' value='' /> <small class='text-muted'>University</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i>Start Year</label> <input id='education_year' required type='date' class='form-control' name='education_year[]' value='' /> <small class='text-muted'>Start Year</small> </div><div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i>End Year</label> <input id='education_yearend' required type='date' class='form-control' name='education_yearend[]' value='' /> <small class='text-muted'>End Year</small> </div><span class='remove_field label label-danger red' style=' margin-left:10px; cursor: pointer; color:red;'>x</span></div>"); //add input box
     }
 });
 
@@ -65,8 +65,8 @@ $(exp_add_button).click(function(e) { //on add input button click
     e.preventDefault();
     if (x < max_fields) { //max input box allowed 
         x++; //text box increment
-       
-        $(exp_wrapper).append("<div><div class='form-group autocomplete'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> Company</label> <input id='myInput"+x+"' onclick='autofill(this)' type='text' class='form-control' name='experience_company[]' value='' /> <small class='text-muted'>Company</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> Position</label> <input id='experience_position' type='text' class='form-control' name='experience_position[]' value='' /> <small class='text-muted'>Position</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> Start Date</label> <input id='experience_start' type='date' class='form-control' name='experience_start_date[]' value='' /> <small class='text-muted'>Start Date</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> End Date</label> <input id='experience_end' type='date' class='form-control' name='experience_end_date[]' value='' /> <small class='text-muted'>End Date</small> </div><span class='exp_remove_field label label-danger red' style=' margin-left:10px; cursor: pointer; color:red;'>close</span></div>"); //add input box
+
+        $(exp_wrapper).append("<div><div class='form-group autocomplete'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> Company</label> <input id='myInput" + x + "' onclick='autofill(this)' required type='text' class='form-control' name='experience_company[]' value='' /> <small class='text-muted'>Company</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> Position</label> <input id='experience_position' required type='text' class='form-control' name='experience_position[]' value='' /> <small class='text-muted'>Position</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> Start Date</label> <input id='experience_start' required type='date' class='form-control' name='experience_start_date[]' value='' /> <small class='text-muted'>Start Date</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> End Date</label> <input id='experience_end' required type='date' class='form-control' name='experience_end_date[]' value='' /> <small class='text-muted'>End Date</small> </div><span class='exp_remove_field label label-danger red' style=' margin-left:10px; cursor: pointer; color:red;'>close</span></div>"); //add input box
     }
 });
 
@@ -86,7 +86,7 @@ function autocomplete(inp, arr) {
         var a, b, i, val = this.value;
         /*close any already open lists of autocompleted values*/
         closeAllLists();
-        if (!val) { return false;}
+        if (!val) { return false; }
         currentFocus = -1;
         /*create a DIV element that will contain the items (values):*/
         a = document.createElement("DIV");
@@ -96,25 +96,25 @@ function autocomplete(inp, arr) {
         this.parentNode.appendChild(a);
         /*for each item in the array...*/
         for (i = 0; i < arr.length; i++) {
-          /*check if the item starts with the same letters as the text field value:*/
-          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-            /*create a DIV element for each matching element:*/
-            b = document.createElement("DIV");
-            /*make the matching letters bold:*/
-            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
-            b.innerHTML += arr[i].substr(val.length);
-            /*insert a input field that will hold the current array item's value:*/
-            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
-            /*execute a function when someone clicks on the item value (DIV element):*/
-            b.addEventListener("click", function(e) {
-                /*insert the value for the autocomplete text field:*/
-                inp.value = this.getElementsByTagName("input")[0].value;
-                /*close the list of autocompleted values,
-                (or any other open lists of autocompleted values:*/
-                closeAllLists();
-            });
-            a.appendChild(b);
-          }
+            /*check if the item starts with the same letters as the text field value:*/
+            if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                /*create a DIV element for each matching element:*/
+                b = document.createElement("DIV");
+                /*make the matching letters bold:*/
+                b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                b.innerHTML += arr[i].substr(val.length);
+                /*insert a input field that will hold the current array item's value:*/
+                b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                /*execute a function when someone clicks on the item value (DIV element):*/
+                b.addEventListener("click", function(e) {
+                    /*insert the value for the autocomplete text field:*/
+                    inp.value = this.getElementsByTagName("input")[0].value;
+                    /*close the list of autocompleted values,
+                    (or any other open lists of autocompleted values:*/
+                    closeAllLists();
+                });
+                a.appendChild(b);
+            }
         }
     });
     /*execute a function presses a key on the keyboard:*/
@@ -122,98 +122,102 @@ function autocomplete(inp, arr) {
         var x = document.getElementById(this.id + "autocomplete-list");
         if (x) x = x.getElementsByTagName("div");
         if (e.keyCode == 40) {
-          /*If the arrow DOWN key is pressed,
-          increase the currentFocus variable:*/
-          currentFocus++;
-          /*and and make the current item more visible:*/
-          addActive(x);
+            /*If the arrow DOWN key is pressed,
+            increase the currentFocus variable:*/
+            currentFocus++;
+            /*and and make the current item more visible:*/
+            addActive(x);
         } else if (e.keyCode == 38) { //up
-          /*If the arrow UP key is pressed,
-          decrease the currentFocus variable:*/
-          currentFocus--;
-          /*and and make the current item more visible:*/
-          addActive(x);
+            /*If the arrow UP key is pressed,
+            decrease the currentFocus variable:*/
+            currentFocus--;
+            /*and and make the current item more visible:*/
+            addActive(x);
         } else if (e.keyCode == 13) {
-          /*If the ENTER key is pressed, prevent the form from being submitted,*/
-          e.preventDefault();
-          if (currentFocus > -1) {
-            /*and simulate a click on the "active" item:*/
-            if (x) x[currentFocus].click();
-          }
+            /*If the ENTER key is pressed, prevent the form from being submitted,*/
+            e.preventDefault();
+            if (currentFocus > -1) {
+                /*and simulate a click on the "active" item:*/
+                if (x) x[currentFocus].click();
+            }
         }
     });
+
     function addActive(x) {
-      /*a function to classify an item as "active":*/
-      if (!x) return false;
-      /*start by removing the "active" class on all items:*/
-      removeActive(x);
-      if (currentFocus >= x.length) currentFocus = 0;
-      if (currentFocus < 0) currentFocus = (x.length - 1);
-      /*add class "autocomplete-active":*/
-      x[currentFocus].classList.add("autocomplete-active");
+        /*a function to classify an item as "active":*/
+        if (!x) return false;
+        /*start by removing the "active" class on all items:*/
+        removeActive(x);
+        if (currentFocus >= x.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = (x.length - 1);
+        /*add class "autocomplete-active":*/
+        x[currentFocus].classList.add("autocomplete-active");
     }
+
     function removeActive(x) {
-      /*a function to remove the "active" class from all autocomplete items:*/
-      for (var i = 0; i < x.length; i++) {
-        x[i].classList.remove("autocomplete-active");
-      }
-    }
-    function closeAllLists(elmnt) {
-      /*close all autocomplete lists in the document,
-      except the one passed as an argument:*/
-      var x = document.getElementsByClassName("autocomplete-items");
-      for (var i = 0; i < x.length; i++) {
-        if (elmnt != x[i] && elmnt != inp) {
-          x[i].parentNode.removeChild(x[i]);
+        /*a function to remove the "active" class from all autocomplete items:*/
+        for (var i = 0; i < x.length; i++) {
+            x[i].classList.remove("autocomplete-active");
         }
-      }
+    }
+
+    function closeAllLists(elmnt) {
+        /*close all autocomplete lists in the document,
+        except the one passed as an argument:*/
+        var x = document.getElementsByClassName("autocomplete-items");
+        for (var i = 0; i < x.length; i++) {
+            if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+            }
+        }
     }
     /*execute a function when someone clicks in the document:*/
-    document.addEventListener("click", function (e) {
+    document.addEventListener("click", function(e) {
         closeAllLists(e.target);
     });
-  }
-  
-  /*An array containing all the country names in the world:*/
- 
-  function autofill(elem) {
-    $.getJSON("app/includes/experience_company.json", function (data) {
+}
 
-      var arrItems = [];      // THE ARRAY TO STORE JSON ITEMS.
-      $.each(data, function (index, value) {
-          arrItems.push(value);       // PUSH THE VALUES INSIDE THE ARRAY.
-      });
+/*An array containing all the country names in the world:*/
 
-      var col = [];
-      for (var i = 0; i < arrItems.length; i++) {
+function autofill(elem) {
+    $.getJSON("app/includes/experience_company.json", function(data) {
 
-          col.push(arrItems[i]['Name']);
-      }
-    var id = $(elem).attr("id");
-    autocomplete(document.getElementById(id), col);
-  }); 
-  }
-  function autofillEdu(elem) {
-    $.getJSON("app/includes/education_course.json", function (data) {
+        var arrItems = []; // THE ARRAY TO STORE JSON ITEMS.
+        $.each(data, function(index, value) {
+            arrItems.push(value); // PUSH THE VALUES INSIDE THE ARRAY.
+        });
 
-      var arrItems = [];      // THE ARRAY TO STORE JSON ITEMS.
-      $.each(data, function (index, value) {
-          arrItems.push(value);       // PUSH THE VALUES INSIDE THE ARRAY.
-      });
+        var col = [];
+        for (var i = 0; i < arrItems.length; i++) {
 
-      var col = [];
-      for (var i = 0; i < arrItems.length; i++) {
+            col.push(arrItems[i]['Name']);
+        }
+        var id = $(elem).attr("id");
+        autocomplete(document.getElementById(id), col);
+    });
+}
 
-          col.push(arrItems[i]['Name']);
-      }
-    var id = $(elem).attr("id");
-    autocomplete(document.getElementById(id), col);
-  }); 
-    
-  }
-  $(document).ready(function(){
+function autofillEdu(elem) {
+    $.getJSON("app/includes/education_course.json", function(data) {
+
+        var arrItems = []; // THE ARRAY TO STORE JSON ITEMS.
+        $.each(data, function(index, value) {
+            arrItems.push(value); // PUSH THE VALUES INSIDE THE ARRAY.
+        });
+
+        var col = [];
+        for (var i = 0; i < arrItems.length; i++) {
+
+            col.push(arrItems[i]['Name']);
+        }
+        var id = $(elem).attr("id");
+        autocomplete(document.getElementById(id), col);
+    });
+
+}
+$(document).ready(function() {
     $(".bootstrap-tagsinput").addClass("form-control");
     $(".bootstrap-tagsinput").css("height", "auto");
     $(".badge-info").css("margin", "2px");
     $(".badge-info").css("padding", "5px");
-   });
+});
