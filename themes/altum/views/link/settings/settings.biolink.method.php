@@ -381,7 +381,7 @@
                                 <div class="<?= !$this->user->plan->settings->skillset ? 'container-disabled': null ?>">
                                     <div class="form-group">
                                         <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->skillset ?></label>
-                                        <input type="text" name="skillset" class="form-control" data-role="tagsinput" value="<?=$data->link->settings->skillset ?>">
+                                        <input type="text" name="skillset" class="form-control" data-role="tagsinput" value="<?=  $data->link->settings->skillset ?? '' ?>">
                                      
                                     </div>
                                
