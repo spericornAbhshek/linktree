@@ -251,27 +251,23 @@
                                 ?>
                                     <div class="form-group autocomplete">
                                         <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->experience_company ?></label>
-                                        <input id="myInput" onclick="autofill(this)" type="text" class="form-control " name="experience_company[]" value="<?= $data->link->settings->experience->company[$i] ?? '' ?>" />
+                                        <input id="experience_company<?php echo $i; ?>" onclick="autofillEdu(this)" onchange="myFunction(this)" type="text" class="form-control " name="experience_company[]" value="<?= $data->link->settings->experience->company[$i] ?? '' ?>" />
                                         <small class="text-muted"><?= $this->language->link->settings->experience_company ?></small>
                                     </div>
                                 
                                     <div class="form-group">
                                         <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->experience_position ?></label>
-                                        <input id="experience_position" type="text" class="form-control" name="experience_position[]" value="<?= $data->link->settings->experience->position[$i] ?? '' ?>" />
+                                        <input id="experience_position<?php echo $i; ?>" type="text" onkeyup="addExp(<?php echo $i; ?>)" class="form-control" name="experience_position[]" value="<?= $data->link->settings->experience->position[$i] ?? '' ?>" />
                                         <small class="text-muted"><?= $this->language->link->settings->experience_position ?></small>
                                     </div>
                                
                                     <div class="form-group">
                                         <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->experience_start ?></label>
-                                        <input id="experience_start" type="date" class="form-control" name="experience_start_date[]" value="<?= $data->link->settings->experience->start[$i] ?? '' ?>" />
+                                        <input id="experience_start" type="text" class="form-control dateRangepicker" data-id_name="experience_year" data-uid="<?php echo $i; ?>" name="experience_start_date[]" value="<?= $data->link->settings->experience->start[$i] ?? '' ?>" />
                                         <small class="text-muted"><?= $this->language->link->settings->experience_start ?></small>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->experience_end ?></label>
-                                        <input id="experience_end" type="date" class="form-control" name="experience_end_date[]" value="<?= $data->link->settings->experience->end[$i] ?? '' ?>" />
-                                        <small class="text-muted"><?= $this->language->link->settings->experience_end ?></small>
-                                    </div>
+                                    
                             <?php }} }else{ ?>
                                 <div class="form-group autocomplete">
                                         <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->experience_company ?></label>
@@ -281,21 +277,17 @@
                                 
                                     <div class="form-group">
                                         <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->experience_position ?></label>
-                                        <input id="experience_position" type="text" class="form-control" name="experience_position[]" value="" />
+                                        <input id="experience_position" type="text"  class="form-control" name="experience_position[]" value="" />
                                         <small class="text-muted"><?= $this->language->link->settings->experience_position ?></small>
                                     </div>
                                
                                     <div class="form-group">
                                         <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->experience_start ?></label>
-                                        <input id="experience_start" type="date" class="form-control" name="experience_start_date[]" value="" />
+                                        <input id="experience_start" type="text" class="form-control dateRangepicker" name="experience_start_date[]" value="" />
                                         <small class="text-muted"><?= $this->language->link->settings->experience_start ?></small>
                                     </div>
                                     
-                                    <div class="form-group">
-                                        <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->experience_end ?></label>
-                                        <input id="experience_end" type="date" class="form-control" name="experience_end_date[]" value="" />
-                                        <small class="text-muted"><?= $this->language->link->settings->experience_end ?></small>
-                                    </div>
+                                    
                             <?php } ?>
                                 
                             </div>
@@ -313,38 +305,34 @@
                             <div id="education" class="input_fields_wrap <?= !$this->user->plan->settings->education ? 'container-disabled': null ?>" >    
                             <?php 
                         //    print_r($data->link->settings->education);
-                        if(property_exists($data->link->settings, 'experience')){ 
+                        if(property_exists($data->link->settings, 'education')){ 
                             if($data->link->settings->education->course !=  ""){ 
                                 for($i = 0; $i < count($data->link->settings->education->course); $i++){
-                                    echo $data->link->settings->education->course[$i];
+                                   
                                 ?>
                                     <div class="form-group">
                                         <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->education_course ?></label>
-                                        <input id="education_course" onclick="autofillEdu(this)" type="text" class="form-control" name="education_course[]" value="<?= $data->link->settings->education->course[$i] ?? '' ?>" />
+                                        <input id="education_course<?php echo $i; ?>" onclick="autofillEdu(this)" onchange="myFunction(this)" type="text" class="form-control" name="education_course[]" value="<?= $data->link->settings->education->course[$i] ?? '' ?>" />
                                         <small class="text-muted"><?= $this->language->link->settings->education_course ?></small>
                                     </div>
                                 
                                     <div class="form-group">
                                         <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->education_univ ?></label>
-                                        <input id="education_univ" type="text" class="form-control" name="education_univ[]" value="<?= $data->link->settings->education->univ[$i] ?? '' ?>" />
+                                        <input id="education_univ<?php echo $i; ?>" onkeyup="addUniv(<?php echo $i; ?>)" type="text" class="form-control" name="education_univ[]" value="<?= $data->link->settings->education->univ[$i] ?? '' ?>" />
                                         <small class="text-muted"><?= $this->language->link->settings->education_univ ?></small>
                                     </div>
                                
                                     <div class="form-group">
                                         <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->education_year ?></label>
-                                        <input id="education_year" type="date" class="form-control" name="education_year[]" value="<?= $data->link->settings->education->year[$i] ?? '' ?>" />
+                                        <input id="education_year" type="text" class="form-control dateRangepicker" data-id_name="education_year" data-uid="<?php echo $i; ?>" name="education_year[]" value="<?= $data->link->settings->education->year[$i] ?? '' ?>" />
                                         <small class="text-muted"><?= $this->language->link->settings->education_year ?></small>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->education_yearend ?></label>
-                                        <input id="education_yearend" type="date" class="form-control" name="education_yearend[]" value="<?= $data->link->settings->education->yearend[$i] ?? '' ?>" />
-                                        <small class="text-muted"><?= $this->language->link->settings->education_yearend ?></small>
-                                    </div>
-                            <?php } } }else{ ?>
+                                    
+                            <?php } } } else{ ?>
                                 <div class="form-group">
                                         <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->education_course ?></label>
-                                        <input id="education_course" onclick="autofillEdu(this)" type="text" class="form-control" name="education_course[]" value="" />
+                                        <input id="education_course" onclick="autofillEdu(this)" onchange="myFunction(this)" type="text" class="form-control" name="education_course[]" value="" />
                                         <small class="text-muted"><?= $this->language->link->settings->education_course ?></small>
                                     </div>
                                 
@@ -356,15 +344,11 @@
                                
                                     <div class="form-group">
                                         <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->education_year ?></label>
-                                        <input id="education_year" type="date" class="form-control" name="education_year[]" value="" />
+                                        <input id="education_year" type="text" class="form-control dateRangepicker" name="education_year[]" value="" />
                                         <small class="text-muted"><?= $this->language->link->settings->education_year ?></small>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label><i class="fab fa-fw fa-google fa-sm mr-1"></i> <?= $this->language->link->settings->education_yearend ?></label>
-                                        <input id="education_yearend" type="date" class="form-control" name="education_yearend[]" value="" />
-                                        <small class="text-muted"><?= $this->language->link->settings->education_yearend ?></small>
-                                    </div>
+                                    
                             <?php } ?>
                                 
                             </div>
@@ -756,9 +740,7 @@
         $('#biolink_preview_iframe').contents().find('#title').text($(event.currentTarget).val());
     });
 
-    $('#settings_description').on('change paste keyup', event => {
-        $('#biolink_preview_iframe').contents().find('#description').text($(event.currentTarget).val());
-    });
+    
 
     /* Text Color Handler */
     let settings_text_color_pickr = Pickr.create({
@@ -792,6 +774,8 @@
 
         $('#biolink_preview_iframe').contents().find('header').css('color', hsva.toHEXA().toString());
         $('#biolink_preview_iframe').contents().find('#branding').css('color', hsva.toHEXA().toString());
+        $('#biolink_preview_iframe').contents().find('#edu_exp').css('color', hsva.toHEXA().toString());
+        $('#biolink_preview_iframe').contents().find('#skillsets').css('color', hsva.toHEXA().toString());
     });
 
     /* Socials Color Handler */

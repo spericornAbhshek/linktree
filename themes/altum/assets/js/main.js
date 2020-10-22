@@ -44,40 +44,90 @@ var add_button = $(".add_field_button"); //Add button ID
 var exp_wrapper = $(".exp_input_fields_wrap"); //Fields wrapper
 var exp_add_button = $(".exp_add_field_button"); //Add button ID
 
-var i = 1; //initlal text box count
+var i = 200; //initlal text box count
 $(add_button).click(function(e) { //on add input button click
     e.preventDefault();
     if (i < max_fields) { //max input box allowed
         i++; //text box increment
-        $(wrapper).append("<div><div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> Course</label> <input id='education_course" + i + "' onclick='autofillEdu(this)' required type='text' class='form-control' name='education_course[]' value='' /> <small class='text-muted'>Course</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> University</label> <input id='education_univ' required type='text' class='form-control' name='education_univ[]' value='' /> <small class='text-muted'>University</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i>Start Year</label> <input id='education_year' required type='date' class='form-control' name='education_year[]' value='' /> <small class='text-muted'>Start Year</small> </div><div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i>End Year</label> <input id='education_yearend' required type='date' class='form-control' name='education_yearend[]' value='' /> <small class='text-muted'>End Year</small> </div><span class='remove_field label label-danger red' style=' margin-left:10px; cursor: pointer; color:red;'>x</span></div>"); //add input box
+        $(wrapper).append("<div class='edu_tbl" + i + "'><div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> Course</label> <input id='education_course" + i + "' onclick='autofillEdu(this)' onchange='myFunction(this)' required type='text' class='form-control edu_courses' name='education_course[]' value='' /> <small class='text-muted'>Course</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> University</label> <input id='education_univ" + i + "' onkeyup='addUniv(" + i + ")' required type='text' class='form-control' name='education_univ[]' value='' /> <small class='text-muted'>University</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i>Start Year</label> <input id='education_year" + i + "' required type='text' class='form-control dateRangepicker'  name='education_year[]' value='' /> <small class='text-muted'>Start Year</small> </div><span onclick='removeEdu(" + i + ")'  class='remove_field label label-danger red' style=' margin-left:10px; cursor: pointer; color:red;'>Remove</span></div>"); //add input box
+        $('#biolink_preview_iframe').contents().find('#edu_table').append("<tr style='text-align: left;' class='edu_tbl" + i + "'> <td><span class='education_course" + i + "'></span><br><small class='university_text" + i + "'></small></td> <td style='text-align: end; padding: 0 0 24px 0; '><small class='eduYear" + i + "'></small></td> </tr>");
+
+        $('.dateRangepicker').daterangepicker({
+            "showDropdowns": true,
+            "minYear": 2000,
+            "maxYear": 2020,
+            "autoApply": true,
+            locale: {
+                format: 'YYYY'
+            }
+        }, function(start, end, label) {
+            console.log('New date range selected: ' + start.format('YYYY') + ' to ' + end.format('YYYY') + ' (predefined range: ' + label + ')');
+            var yearValue = start.format('YYYY') + '-' + end.format('YYYY');
+            var yearClass = ".eduYear" + i;
+            // alert(yearValue);
+            // alert(yearClass);
+
+            $('#biolink_preview_iframe').contents().find(yearClass).text(yearValue);
+        });
     }
 });
 
-$(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
+// $(wrapper).on("click", ".remove_field", function(e) { //user click on remove text
+//     var edu_tbl = ".edu_tbl" + i;
+//     alert(edu_tbl);
+//     $('#biolink_preview_iframe').contents().find(edu_tbl).remove();
+//     e.preventDefault();
+//     $(this).parent().remove();
+//     i--;
+// });
 
-    e.preventDefault();
-    $(this).parent().remove();
-    i--;
-});
-
-var x = 1; //initlal text box count
+var x = 200; //initlal text box count
 $(exp_add_button).click(function(e) { //on add input button click
     e.preventDefault();
     if (x < max_fields) { //max input box allowed 
         x++; //text box increment
 
-        $(exp_wrapper).append("<div><div class='form-group autocomplete'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> Company</label> <input id='myInput" + x + "' onclick='autofill(this)' required type='text' class='form-control' name='experience_company[]' value='' /> <small class='text-muted'>Company</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> Position</label> <input id='experience_position' required type='text' class='form-control' name='experience_position[]' value='' /> <small class='text-muted'>Position</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> Start Date</label> <input id='experience_start' required type='date' class='form-control' name='experience_start_date[]' value='' /> <small class='text-muted'>Start Date</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> End Date</label> <input id='experience_end' required type='date' class='form-control' name='experience_end_date[]' value='' /> <small class='text-muted'>End Date</small> </div><span class='exp_remove_field label label-danger red' style=' margin-left:10px; cursor: pointer; color:red;'>close</span></div>"); //add input box
+        $(exp_wrapper).append("<div class='exp_tbl" + x + "'><div class='form-group autocomplete'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> Company</label> <input id='experience_company" + x + "' onclick='autofill(this)' onchange='myFunction(this)'  required type='text' class='form-control experience_companys' name='experience_company[]' value='' /> <small class='text-muted'>Company</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> Position</label> <input id='experience_position" + x + "' onkeyup='addExp(" + x + ")' required type='text' class='form-control' name='experience_position[]' value='' /> <small class='text-muted'>Position</small> </div> <div class='form-group'> <label><i class='fab fa-fw fa-google fa-sm mr-1'></i> Start Date</label> <input id='experience_start" + x + "' required type='text' class='form-control dateRangepicker' name='experience_start_date[]' value='' /> <small class='text-muted'>Start Date</small> </div><span onclick='removeExp(" + x + ")' class='exp_remove_field label label-danger red' style=' margin-left:10px; cursor: pointer; color:red;'>close</span></div>"); //add input box
+        $('#biolink_preview_iframe').contents().find('#exp_table').append("<tr style='text-align: left;' class='exp_tbl" + x + "'> <td><span class='experience_company" + x + "'></span><br><small class='exp_position" + x + "'></small></td> <td style='text-align: end; padding: 0 0 24px 0; '><small class='expYear" + x + "'></small></td> </tr>");
+
+        $('.dateRangepicker').daterangepicker({
+            "showDropdowns": true,
+            "minYear": 2000,
+            "maxYear": 2020,
+            "autoApply": true,
+            locale: {
+                format: 'YYYY'
+            }
+        }, function(start, end, label) {
+            console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+            var yearValue = start.format('YYYY') + '-' + end.format('YYYY');
+            var yearClass = ".expYear" + x;
+            // alert(yearValue);
+            // alert(yearClass);
+
+            $('#biolink_preview_iframe').contents().find(yearClass).text(yearValue);
+        });
+
     }
+
 });
 
-$(exp_wrapper).on("click", ".exp_remove_field", function(e) { //user click on remove text
+function removeExp(x) {
+    var exp_tbl = ".exp_tbl" + x;
+    // alert(exp_tbl);
+    $('#biolink_preview_iframe').contents().find(exp_tbl).remove();
+    $(exp_tbl).remove();
+}
 
-    e.preventDefault();
-    $(this).parent().remove();
-    x--;
-});
+function removeEdu(x) {
+    var edu_tbl = ".edu_tbl" + x;
+    // alert(edu_tbl);
+    $('#biolink_preview_iframe').contents().find(edu_tbl).remove();
+    $(edu_tbl).remove();
+}
 
-function autocomplete(inp, arr) {
+
+function autocomplete(inp, arr, id) {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
     var currentFocus;
@@ -109,6 +159,28 @@ function autocomplete(inp, arr) {
                 b.addEventListener("click", function(e) {
                     /*insert the value for the autocomplete text field:*/
                     inp.value = this.getElementsByTagName("input")[0].value;
+                    myFunction(id);
+                    // if(id == "experience_company"){
+                    //     var text = "." + id;
+                    //     $('#biolink_preview_iframe').contents().find(text).text(inp.value);
+                    // }else{
+
+                    // }
+
+                    // var inputs = $(".edu_courses");
+                    // for (var i = 0; i < inputs.length; i++) {
+                    //     // var a = "." + $(inputs[i]).attr('id');
+                    //     var a = "." + $(inputs[inputs.length - 1]).attr('id');
+                    //     alert(a)
+                    //     $('#biolink_preview_iframe').contents().find(a).text(inp.value);
+                    // }
+                    // var expinputs = $(".experience_companys");
+                    // for (var i = 0; i < expinputs.length; i++) {
+                    //     // var a = "." + $(inputs[i]).attr('id');
+                    //     var a = "." + $(expinputs[expinputs.length - 1]).attr('id');
+                    //     alert(a)
+                    //     $('#biolink_preview_iframe').contents().find(a).text(inp.value);
+                    // }
                     /*close the list of autocompleted values,
                     (or any other open lists of autocompleted values:*/
                     closeAllLists();
@@ -170,10 +242,12 @@ function autocomplete(inp, arr) {
                 x[i].parentNode.removeChild(x[i]);
             }
         }
+
     }
     /*execute a function when someone clicks in the document:*/
     document.addEventListener("click", function(e) {
         closeAllLists(e.target);
+
     });
 }
 
@@ -193,7 +267,7 @@ function autofill(elem) {
             col.push(arrItems[i]['Name']);
         }
         var id = $(elem).attr("id");
-        autocomplete(document.getElementById(id), col);
+        autocomplete(document.getElementById(id), col, id);
     });
 }
 
@@ -211,13 +285,95 @@ function autofillEdu(elem) {
             col.push(arrItems[i]['Name']);
         }
         var id = $(elem).attr("id");
-        autocomplete(document.getElementById(id), col);
+        autocomplete(document.getElementById(id), col, id);
     });
 
 }
+
+function addUniv(elem) {
+    var id = "#education_univ" + elem;
+    var text = ".university_text" + elem;
+    $('#biolink_preview_iframe').contents().find(text).text($(id).val());
+
+}
+
+function addExp(elem) {
+    var id = "#experience_position" + elem;
+    var text = ".exp_position" + elem;
+    $('#biolink_preview_iframe').contents().find(text).text($(id).val());
+
+}
+
+
 $(document).ready(function() {
     $(".bootstrap-tagsinput").addClass("form-control");
     $(".bootstrap-tagsinput").css("height", "auto");
     $(".badge-info").css("margin", "2px");
     $(".badge-info").css("padding", "5px");
+
+
+
+
 });
+$('.dateRangepicker').daterangepicker({
+    "showDropdowns": true,
+    "minYear": 2000,
+    "maxYear": 2020,
+    "autoApply": true,
+    locale: {
+        format: 'YYYY'
+    }
+}, function(start, end, label) {
+    var x = $(this)[0].element.data('uid');
+    console.log($(this)[0].element.data('id_name'));
+    console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+    if ($(this)[0].element.data('id_name') == "education_year") {
+        var yearValue = start.format('YYYY') + '-' + end.format('YYYY');
+        var yearClass = ".eduYear" + x;
+        // alert(yearValue);
+        // alert(yearClass);
+        $('#biolink_preview_iframe').contents().find(yearClass).text(yearValue);
+    } else {
+        var yearValue = start.format('YYYY') + '-' + end.format('YYYY');
+        var yearClass = ".expYear" + x;
+        // alert(yearValue);
+        // alert(yearClass);
+        $('#biolink_preview_iframe').contents().find(yearClass).text(yearValue);
+    }
+
+
+    $('#biolink_preview_iframe').contents().find(yearClass).text(yearValue);
+});
+
+$('#settings_description').on('change paste keyup', event => {
+
+    $('#biolink_preview_iframe').contents().find('#description').text('');
+    $('#biolink_preview_iframe').contents().find('#description').append($(event.currentTarget).val());
+});
+
+// $('#settings_description').on('change paste keyup', event => {
+//     $('#biolink_preview_iframe').contents().find('#description').text('');
+//     $('#biolink_preview_iframe').contents().find('#description').append($(event.currentTarget).val());
+// });
+
+function enableTxt(elem) {
+
+}
+// $('body').on('change', '#experience_company2', function() {
+//     alert($(this).val());
+// });
+function myFunction(elem) {
+
+    if (typeof elem == "object") {
+        var elem = $(elem).attr("id");
+
+    } else {
+        var elem = elem;
+
+    }
+
+    var value = $("#" + elem).val();
+    var text = "." + elem;
+    $('#biolink_preview_iframe').contents().find(text).text(value);
+    // alert($("#" + elem).val());
+}

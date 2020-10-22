@@ -62,26 +62,21 @@
 
                         <?php endforeach ?>
                     <?php endif ?>
-                    <div  class="d-flex flex-wrap justify-content-center mt-5">
-                    <?php 
+                    <div  class="d-flex flex-wrap  mt-5" id="edu_exp" style="<?= $data->link->design->text_style ?>">
+                    
+                           <h6 id="exp">Experience</h6>
+                           <table style="width: 100%; text-align: left;" id="exp_table" >
+                           <?php 
                     if(property_exists($data->link->settings, 'experience')){ 
                    
                       if($data->link->settings->experience->company !=  ""){ ?>
-                           <h5>Experience</h5>
-                           <table style="width: 100%; text-align: left;" >
-                            <tr>
-                                <td><b>Company Name</b></td>
-                                <td colspan="1"><b>Position</b></td>
-                                <td><b>Time</b></td>
-                            </tr>
                            <?php   for($i = 0; $i < count($data->link->settings->experience->company); $i++){
-                                   
-                                ?>
+                                   ?>
                                
                                    <tr style="text-align: left;">
-                                       <td><?= $data->link->settings->experience->company[$i] ?? '' ?></td>
-                                       <td colspan="1"><?= $data->link->settings->experience->position[$i] ?? '' ?></td>
-                                       <td><?= date('Y', strtotime($data->link->settings->experience->start[$i])) ?? '' ?>-<?= date('Y', strtotime($data->link->settings->experience->end[$i])) ?? '' ?></td>
+                                       <td><span class="experience_company<?php echo $i; ?>" ><?= $data->link->settings->experience->company[$i] ?? '' ?></span><br><small class="exp_position<?php echo $i; ?>"><?= $data->link->settings->experience->position[$i] ?? '' ?></small></td>
+                                       <!-- <td colspan="1"></td> -->
+                                       <td style=" text-align: end; padding: 0 0 24px 0; "><small class="expYear<?php echo $i; ?>"><?= $data->link->settings->experience->start[$i] ?? '' ?></small></td>
                                     </tr>
                                
                                 
@@ -89,42 +84,42 @@
                             <?php } ?> </table> <?php  } } ?>
 
                   
+                            <h6>Education</h6>
+                            <table style="width: 100%; text-align: left;" id="edu_table">
+                                    
                     <?php if(property_exists($data->link->settings, 'education')){ 
-                          if($data->link->settings->education->course !=  ""){  ?>
-                            <h5>Education</h5>
-                            <table style="width: 100%; text-align: left;">
-                            <tr>
-                                <td><b>Course Name</b></td>
-                                <td colspan="1"><b>University</b></td>
-                                <td><b>Time</b></td>
-                            </tr>
+                          if($data->link->settings->education->course !=  ""){  ?> 
                            <?php
                                 for($i = 0; $i < count($data->link->settings->education->course); $i++){
                                    
                                 ?>
                                 <tr style="text-align: left;">
-                                       <td><?= $data->link->settings->education->course[$i] ?? '' ?></td>
-                                       <td colspan="1"><?= $data->link->settings->education->univ[$i] ?? '' ?></td>
-                                       <td><?= date('Y', strtotime($data->link->settings->education->year[$i])) ?? '' ?>-<?= date('Y', strtotime($data->link->settings->education->yearend[$i])) ?? '' ?></td>
+                                       <td ><span class="education_course<?php echo $i; ?>"><?= $data->link->settings->education->course[$i] ?? '' ?></span> <br><small class="university_text<?php echo $i; ?>"><?= $data->link->settings->education->univ[$i] ?? '' ?></small></td>
+                                       <!-- <td colspan="1"></td> -->
+                                       <td style=" text-align: end; padding: 0 0 24px 0; "><small class="eduYear<?php echo $i; ?>"><?= $data->link->settings->education->year[$i] ?? '' ?></small></td>
                                     </tr>
                                
                                 
                                    
-                            <?php } ?> </table> <?php } }  ?>
-                            </div>
+                            <?php }  } }  ?>
+                            </table>
                     <?php if(property_exists($data->link->settings, 'skillset')){ 
                           if($data->link->settings->skillset !=  ""){  ?>
-                            <h5>Skill Set</h5>
-                           
-                               
-                                
-                                    <div class="word-break">
-                                         <label><b><?= $data->link->settings->skillset ?? '' ?></b></label> 
+                            <div class="text-left" id="skillsets" style="<?= $data->link->design->text_style ?>"><h6>SKILLS</h6>
+                            <div class="skills_container">
+                            <?php if($data->link->settings->skillset !=""){
+                                $skills = explode(',',$data->link->settings->skillset);
+                                foreach($skills as $skill){ ?>
+                                    <span class="<?php echo $skill; ?>" style=" border: solid 2px; border-radius: 5px; ">&nbsp;<?php echo $skill; ?>&nbsp;</span>
+                               <?php }
+                            }?>
+                            </div>
+                           </div> 
                                        
-                                    </div>
+                                   
                                
                             <?php } }   ?>
-                          
+                            </div> 
                     <?php if($data->user->plan_settings->socials): ?>
                     <div id="socials" class="d-flex flex-wrap justify-content-center mt-5">
 
@@ -132,7 +127,7 @@
                     <?php foreach($data->link->settings->socials as $key => $value): ?>
                         <?php if($value): ?>
 
-                        <div class="mx-3 mb-3">
+                        <div class="mx-3 mb-3" >
                             <span >
                                 <a href="<?= sprintf($biolink_socials[$key]['format'], $value) ?>" target="_blank">
                                     <i
