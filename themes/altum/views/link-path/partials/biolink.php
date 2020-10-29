@@ -103,14 +103,13 @@
                                    
                             <?php }  } }  ?>
                             </table>
-                    <?php if(property_exists($data->link->settings, 'skillset')){ 
-                          if($data->link->settings->skillset !=  ""){  ?>
-                            <div class="text-left" id="skillsets" style="<?= $data->link->design->text_style ?>"><h6>SKILLS</h6>
+                    
+                            <div class="text-left" id="skillsets" style="line-height: 2; <?= $data->link->design->text_style ?>"><h6>SKILLS</h6>
                             <div class="skills_container">
                             <?php if($data->link->settings->skillset !=""){
                                 $skills = explode(',',$data->link->settings->skillset);
                                 foreach($skills as $skill){ ?>
-                                    <span class="<?php echo $skill; ?>" style=" border: solid 2px; border-radius: 5px; ">&nbsp;<?php echo $skill; ?>&nbsp;</span>
+                                    <span class="<?php echo $skill; ?>" style=" border: solid 1px; border-radius: 5px; line-height: 2; ">&nbsp;<?php echo $skill; ?>&nbsp;</span>
                                <?php }
                             }?>
                             </div>
@@ -118,7 +117,7 @@
                                        
                                    
                                
-                            <?php } }   ?>
+                            
                             </div> 
                     <?php if($data->user->plan_settings->socials): ?>
                     <div id="socials" class="d-flex flex-wrap justify-content-center mt-5">
