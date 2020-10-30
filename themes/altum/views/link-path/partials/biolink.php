@@ -62,10 +62,17 @@
 
                         <?php endforeach ?>
                     <?php endif ?>
-                    <div  class="d-flex flex-wrap  mt-5" id="edu_exp" style="<?= $data->link->design->text_style ?>">
-                    
-                           <h6 id="exp">Experience</h6>
-                           <table style="width: 100%; text-align: left;" id="exp_table" >
+                    <?php 
+                    $display = "display:none !important;";
+                    if(property_exists($data->link->settings, 'experience')){ 
+                   
+                      if($data->link->settings->experience->company !=  ""){
+                          $display = "display:flex !important";
+                      }}?>
+                    <div  class="d-flex flex-wrap edu_exp experience_div"  style="<?php echo $display; ?> border-top: 1px solid rgb(192 181 181 / 75%); box-shadow: rgb(198 173 173 / 62%) 0px -1px 0px; <?= $data->link->design->text_style ?>">
+                   
+                           <h6 id="exp" class="margin-top_3">EXPERIENCE</h6>
+                           <table style="width: 100%; text-align: left; border-collapse: separate;border-spacing: 0 0.6em;" id="exp_table" >
                            <?php 
                     if(property_exists($data->link->settings, 'experience')){ 
                    
@@ -74,27 +81,37 @@
                                    ?>
                                
                                    <tr style="text-align: left;">
-                                       <td><span class="experience_company<?php echo $i; ?>" ><?= $data->link->settings->experience->company[$i] ?? '' ?></span><br><small class="exp_position<?php echo $i; ?>"><?= $data->link->settings->experience->position[$i] ?? '' ?></small></td>
+                                       <td><span class="text-uppercase experience_company<?php echo $i; ?>" ><?= $data->link->settings->experience->company[$i] ?? '' ?></span><br><small class="text-capitalize exp_position<?php echo $i; ?>"><?= $data->link->settings->experience->position[$i] ?? '' ?></small></td>
                                        <!-- <td colspan="1"></td> -->
                                        <td style=" text-align: end; padding: 0 0 24px 0; "><small class="expYear<?php echo $i; ?>"><?= $data->link->settings->experience->start[$i] ?? '' ?></small></td>
                                     </tr>
                                
                                 
                                    
-                            <?php } ?> </table> <?php  } } ?>
-
-                  
-                            <h6>Education</h6>
-                            <table style="width: 100%; text-align: left;" id="edu_table">
-                                    
-                    <?php if(property_exists($data->link->settings, 'education')){ 
+                            <?php }  } } ?>
+                            </table>
+                            </div>  
+                            
+                            <br> 
+                            <?php 
+                    $display_edu = "display:none !important;";
+                    if(property_exists($data->link->settings, 'education')){ 
+                   
+                      if($data->link->settings->education->course !=  ""){
+                          $display_edu = "display:flex !important";
+                      }}?>
+                            <div  class="d-flex flex-wrap  edu_exp education_div"  style="<?php echo $display_edu; ?> border-top: 1px solid rgb(192 181 181 / 75%); box-shadow: rgb(198 173 173 / 62%) 0px -1px 0px; <?= $data->link->design->text_style ?>">
+                           
+                            <h6 class="margin-top_3">EDUCATION</h6>
+                            <table style="width: 100%; text-align: left; border-collapse: separate;border-spacing: 0 0.6em;" id="edu_table">
+                         <?php if(property_exists($data->link->settings, 'education')){ 
                           if($data->link->settings->education->course !=  ""){  ?> 
                            <?php
                                 for($i = 0; $i < count($data->link->settings->education->course); $i++){
                                    
                                 ?>
                                 <tr style="text-align: left;">
-                                       <td ><span class="education_course<?php echo $i; ?>"><?= $data->link->settings->education->course[$i] ?? '' ?></span> <br><small class="university_text<?php echo $i; ?>"><?= $data->link->settings->education->univ[$i] ?? '' ?></small></td>
+                                       <td ><span class="text-uppercase education_course<?php echo $i; ?>"><?= $data->link->settings->education->course[$i] ?? '' ?></span> <br><small class="text-capitalize university_text<?php echo $i; ?>"><?= $data->link->settings->education->univ[$i] ?? '' ?></small></td>
                                        <!-- <td colspan="1"></td> -->
                                        <td style=" text-align: end; padding: 0 0 24px 0; "><small class="eduYear<?php echo $i; ?>"><?= $data->link->settings->education->year[$i] ?? '' ?></small></td>
                                     </tr>
@@ -103,22 +120,34 @@
                                    
                             <?php }  } }  ?>
                             </table>
-                    
-                            <div class="text-left" id="skillsets" style="line-height: 2; <?= $data->link->design->text_style ?>"><h6>SKILLS</h6>
+                            </div>
+                            <br> 
+                            <?php 
+                    $display_skills = "display:none !important;";
+                    if(property_exists($data->link->settings, 'skillset')){ 
+                   
+                      if($data->link->settings->skillset !=  ""){
+                          $display_skills = "display:flex !important";
+                      }}?>
+                            <div class="text-left skillsets_div" id="skillsets" style="<?php echo $display_skills; ?> border-top: 1px solid rgb(192 181 181 / 75%); box-shadow: rgb(198 173 173 / 62%) 0px -1px 0px; line-height: 2; <?= $data->link->design->text_style ?>">
+                            <h6 class="margin-top_3">SKILLS</h6>
+                          
                             <div class="skills_container">
-                            <?php if($data->link->settings->skillset !=""){
+                            <?php 
+                            if(property_exists($data->link->settings, 'skillset')){ 
+                            if($data->link->settings->skillset !=""){
                                 $skills = explode(',',$data->link->settings->skillset);
                                 foreach($skills as $skill){ ?>
-                                    <span class="<?php echo $skill; ?>" style=" border: solid 1px; border-radius: 5px; line-height: 2; ">&nbsp;<?php echo $skill; ?>&nbsp;</span>
+                                    <span class="text-capitalize <?php echo $skill; ?>" style=" border: solid 1px; border-radius: 5px; line-height: 2; ">&nbsp;<?php echo $skill; ?>&nbsp;</span>
                                <?php }
-                            }?>
+                            }}?>
                             </div>
                            </div> 
                                        
                                    
                                
                             
-                            </div> 
+                            
                     <?php if($data->user->plan_settings->socials): ?>
                     <div id="socials" class="d-flex flex-wrap justify-content-center mt-5">
 

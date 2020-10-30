@@ -273,9 +273,10 @@
             var text = "";
             for (i = 0; i < this.itemsArray.length; i++) {
 
-                text += "&nbsp;<span class=" + this.itemsArray[i] + " style = 'border: solid 1px; border-radius: 5px;'> &nbsp;" + this.itemsArray[i] + "&nbsp; </span>&nbsp;";
+                text += "&nbsp;<span class= text-capitalize " + this.itemsArray[i] + " style = 'border: solid 1px; border-radius: 5px;'> &nbsp;" + this.itemsArray[i] + "&nbsp; </span>&nbsp;";
                 // $('#biolink_preview_iframe').contents().find('.skills_container').append("&nbsp;<span style = 'border: solid; border-radius: 5px;'> &nbsp;" + item + "&nbsp; </span>&nbsp;")
             }
+            $('#biolink_preview_iframe').contents().find(".skillsets_div").show();
             $('#biolink_preview_iframe').contents().find('.skills_container').html("")
             $('#biolink_preview_iframe').contents().find('.skills_container').html(text)
             console.log(this.itemsArray)

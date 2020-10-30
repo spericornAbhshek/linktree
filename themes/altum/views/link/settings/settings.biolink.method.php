@@ -778,7 +778,7 @@
 
         $('#biolink_preview_iframe').contents().find('header').css('color', hsva.toHEXA().toString());
         $('#biolink_preview_iframe').contents().find('#branding').css('color', hsva.toHEXA().toString());
-        $('#biolink_preview_iframe').contents().find('#edu_exp').css('color', hsva.toHEXA().toString());
+        $('#biolink_preview_iframe').contents().find('.edu_exp').css('color', hsva.toHEXA().toString());
         $('#biolink_preview_iframe').contents().find('#skillsets').css('color', hsva.toHEXA().toString());
     });
 

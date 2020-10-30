@@ -50,8 +50,8 @@ $(add_button).click(function(e) { //on add input button click
     if (i < max_fields) { //max input box allowed
         i++; //text box increment
         $(wrapper).append("<div class='edu_tbl" + i + "'><div class='form-group'> <label><i class='fas fa-book-reader'></i> Course</label> <input id='education_course" + i + "' onclick='autofillEdu(this)' onchange='myFunction(this)' required type='text' class='form-control edu_courses' name='education_course[]' value='' /> <small class='text-muted'>Course</small> </div> <div class='form-group'> <label><i class='fas fa-user-graduate'></i> University</label> <input id='education_univ" + i + "' onkeyup='addUniv(" + i + ")' required type='text' class='form-control' name='education_univ[]' value='' /> <small class='text-muted'>University</small> </div> <div class='form-group'> <label><i class='far fa-calendar'></i>Year</label> <input id='education_year" + i + "' required type='text' class='form-control dateRangepicker'  name='education_year[]' value='' /> <small class='text-muted'>Year</small> </div><span onclick='removeEdu(" + i + ")'  class='remove_field label label-danger red' style=' margin-left:10px; cursor: pointer; color:red;'>Remove</span></div>"); //add input box
-        $('#biolink_preview_iframe').contents().find('#edu_table').append("<tr style='text-align: left;' class='edu_tbl" + i + "'> <td><span class='education_course" + i + "'></span><br><small class='university_text" + i + "'></small></td> <td style='text-align: end; padding: 0 0 24px 0; '><small class='eduYear" + i + "'></small></td> </tr>");
-
+        $('#biolink_preview_iframe').contents().find('#edu_table').append("<tr style='text-align: left;' class='edu_tbl" + i + "'> <td><span class='text-uppercase education_course" + i + "'></span><br><small class='text-capitalize university_text" + i + "'></small></td> <td style='text-align: end; padding: 0 0 24px 0; '><small class='eduYear" + i + "'></small></td> </tr>");
+        $('#biolink_preview_iframe').contents().find(".education_div").show();
         $('.dateRangepicker').daterangepicker({
             "showDropdowns": true,
             "minYear": 2000,
@@ -88,8 +88,8 @@ $(exp_add_button).click(function(e) { //on add input button click
         x++; //text box increment
 
         $(exp_wrapper).append("<div class='exp_tbl" + x + "'><div class='form-group autocomplete'> <label><i class='fas fa-industry'></i> Company</label> <input id='experience_company" + x + "' onclick='autofill(this)' onchange='myFunction(this)'  required type='text' class='form-control experience_companys' name='experience_company[]' value='' /> <small class='text-muted'>Company</small> </div> <div class='form-group'> <label><i class='fas fa-project-diagram'></i> Position</label> <input id='experience_position" + x + "' onkeyup='addExp(" + x + ")' required type='text' class='form-control' name='experience_position[]' value='' /> <small class='text-muted'>Position</small> </div> <div class='form-group'> <label><i class='far fa-calendar'></i> Year</label> <input id='experience_start" + x + "' required type='text' class='form-control dateRangepicker' name='experience_start_date[]' value='' /> <small class='text-muted'>Year</small> </div><span onclick='removeExp(" + x + ")' class='exp_remove_field label label-danger red' style=' margin-left:10px; cursor: pointer; color:red;'>Remove</span></div>"); //add input box
-        $('#biolink_preview_iframe').contents().find('#exp_table').append("<tr style='text-align: left;' class='exp_tbl" + x + "'> <td><span class='experience_company" + x + "'></span><br><small class='exp_position" + x + "'></small></td> <td style='text-align: end; padding: 0 0 24px 0; '><small class='expYear" + x + "'></small></td> </tr>");
-
+        $('#biolink_preview_iframe').contents().find('#exp_table').append("<tr style='text-align: left;' class='exp_tbl" + x + "'> <td><span class='text-uppercase experience_company" + x + "'></span><br><small class='text-capitalize exp_position" + x + "'></small></td> <td style='text-align: end; padding: 0 0 24px 0; '><small class='expYear" + x + "'></small></td> </tr>");
+        $('#biolink_preview_iframe').contents().find(".experience_div").show();
         $('.dateRangepicker').daterangepicker({
             "showDropdowns": true,
             "minYear": 2000,
@@ -293,6 +293,7 @@ function autofillEdu(elem) {
 function addUniv(elem) {
     var id = "#education_univ" + elem;
     var text = ".university_text" + elem;
+
     $('#biolink_preview_iframe').contents().find(text).text($(id).val());
 
 }
@@ -300,6 +301,8 @@ function addUniv(elem) {
 function addExp(elem) {
     var id = "#experience_position" + elem;
     var text = ".exp_position" + elem;
+
+
     $('#biolink_preview_iframe').contents().find(text).text($(id).val());
 
 }
